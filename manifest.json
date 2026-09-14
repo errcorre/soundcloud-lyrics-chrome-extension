@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "SoundCloud Lyrics (Genius)",
+  "version": "1.0.0",
+  "description": "Показывает текст текущей песни SoundCloud во всплывающей панели, используя Genius.",
+  "permissions": ["storage", "offscreen"],
+  "host_permissions": [
+    "https://api.genius.com/*",
+    "https://genius.com/*",
+    "https://*.genius.com/*",
+    "https://lrclib.net/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://soundcloud.com/*"],
+      "js": ["content.js"],
+      "css": ["panel.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "SoundCloud Lyrics",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html"
+}
